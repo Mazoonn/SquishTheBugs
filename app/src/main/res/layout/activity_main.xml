@@ -4,56 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mi/bg_logo_background"
+    android:background="@android:color/holo_green_light"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="302dp"
-        android:layout_height="72dp"
-        android:text="Shop"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="296dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="302dp"
-        android:layout_height="72dp"
-        android:shadowColor="#124DE4"
-        android:text="Game"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="194dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="72dp"
-        android:padding="10sp"
-        android:paddingLeft="2sp"
-        android:paddingTop="5sp"
-        android:paddingRight="2sp"
-        android:shadowColor="#000000"
-        android:text="Squish the bugs"
-        android:textColor="#28C68F"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="92dp"
-        tools:ignore="MissingConstraints" />
-
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/options_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_manage"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="76dp"
+        android:contentDescription="@string/todo"
+        android:tint="#388C97"
+        app:layout_constraintBottom_toTopOf="@+id/squish_the_bugs_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_manage" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="409dp"
-        android:layout_height="720dp"
-        app:srcCompat="@mipmap/logo"
-        tools:layout_editor_absoluteX="-7dp"
-        tools:layout_editor_absoluteY="5dp" />
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="148dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/play"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/shop_buttom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/squish_the_bugs_text"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/shop_buttom"
+        android:layout_width="148dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="309dp"
+        android:text="@string/shop"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/play_button"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/squish_the_bugs_text"
+        android:layout_width="216dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginBottom="76dp"
+        android:text="@string/squish_the_bugs"
+        android:textColor="#388C97"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/play_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
