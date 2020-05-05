@@ -4,7 +4,8 @@
     <string name="shop">Shop</string>
     <string name="squish_the_bugs">Squish the bugs</string>
     <string name="play">Play</string>
-    <string name="todo">todo</string>
+    <string name="TODO">todo</string>
     <string name="login">Login</string>
     <string name="coins">Coins :</string>
+    <string name="todo">TODO</string>
 </resources>
