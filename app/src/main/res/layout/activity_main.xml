@@ -25,7 +25,7 @@
 
     <Button
         android:id="@+id/play_buttom"
-        android:layout_width="0dp"
+        android:layout_width="156dp"
         android:layout_height="0dp"
         android:layout_marginBottom="25dp"
         android:background="@drawable/roundedbutton"
@@ -35,8 +35,8 @@
         android:textColor="#2196F3"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/shop_buttom"
-        app:layout_constraintEnd_toEndOf="@+id/shop_buttom"
-        app:layout_constraintStart_toStartOf="@+id/shop_buttom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_squish_the_bugs" />
 
     <ImageView
@@ -48,6 +48,7 @@
         android:layout_marginRight="41dp"
         android:layout_marginBottom="7dp"
         android:background="#ff99cc00"
+        android:contentDescription="@string/todo"
         android:tint="#2196F3"
         app:layout_constraintBottom_toTopOf="@+id/text_squish_the_bugs"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +67,7 @@
         android:textAllCaps="false"
         android:textColor="#2196F3"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/black_bug"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shop_buttom" />
@@ -110,10 +111,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/black_bug"
         android:layout_width="160dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="46dp"
+        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
