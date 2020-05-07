@@ -7,4 +7,39 @@
     android:layout_height="match_parent"
     tools:context=".OptionsActivity">
 
+    <Switch
+        android:id="@+id/mute_switch"
+        android:layout_width="68dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginBottom="3dp"
+        android:text="@string/on"
+        app:layout_constraintBottom_toBottomOf="@+id/vibrate_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sounds_txt" />
+
+    <TextView
+        android:id="@+id/sounds_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:text="@string/sounds"
+        app:layout_constraintEnd_toEndOf="@+id/mute_switch"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/vibrate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/vibrate"
+        app:layout_constraintStart_toEndOf="@+id/mute_switch"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

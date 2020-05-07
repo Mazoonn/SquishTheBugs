@@ -8,4 +8,9 @@
     <string name="login">Login</string>
     <string name="coins">Coins :</string>
     <string name="todo">TODO</string>
+    <string name="sounds">Sounds</string>
+    <string name="on">On</string>
+    <string name="vibrate">Vibrate</string>
+    <string name="start_service">Start Service</string>
+    <string name="stop_service">Stop Service</string>
 </resources>
