@@ -43,6 +43,14 @@ public class OptionsActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn_return_from_options).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OptionsActivity.this,
+                        MainActivity.class);
+                startActivity(intent);}
+        });
+
 
 
 

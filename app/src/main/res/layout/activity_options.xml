@@ -41,5 +41,13 @@
         app:layout_constraintStart_toEndOf="@+id/mute_switch"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_return_from_options"
+        android:layout_width="55dp"
+        android:layout_height="41dp"
+        android:background="@drawable/return_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
