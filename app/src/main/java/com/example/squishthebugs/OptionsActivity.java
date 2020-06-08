@@ -32,7 +32,7 @@ public class OptionsActivity extends AppCompatActivity {
         final AudioManager manager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
 
-        btnVibrate = findViewById(R.id.vibrate_button);
+        btnVibrate = findViewById(R.id.vibration_button);
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         btnVibrate.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +43,7 @@ public class OptionsActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_return_from_options).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.main_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(OptionsActivity.this,
