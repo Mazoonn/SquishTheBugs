@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
          }
         });
 
-        findViewById(R.id.options_buttom).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.options_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);}
         });
 
-        findViewById(R.id.shop_buttom).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.shop_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);}
         });
 
-        findViewById(R.id.login_buttom).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.login_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);}
         });
 
-        findViewById(R.id.play_buttom).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.play_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,
