@@ -9,31 +9,27 @@
 
     <TextView
         android:id="@+id/text_coins"
-        android:layout_width="0dp"
+        android:layout_width="193dp"
         android:layout_height="0dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginLeft="37dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginRight="33dp"
-        android:layout_marginBottom="558dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginBottom="480dp"
         android:contentDescription="@string/todo"
         android:text="@string/coins"
         android:textColor="@color/colorButtonText"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_return"
         app:layout_constraintEnd_toEndOf="@+id/text_shop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_shop" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_shop"
-        android:layout_width="115dp"
+        android:layout_width="106dp"
         android:layout_height="0dp"
         android:layout_marginTop="38dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginRight="136dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="15dp"
         android:fontFamily="@font/alfa_slab_one"
         android:text="@string/shop"
         android:textColor="@color/colorButtonText"
@@ -41,6 +37,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/text_coins"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -54,6 +51,7 @@
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_coins"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
