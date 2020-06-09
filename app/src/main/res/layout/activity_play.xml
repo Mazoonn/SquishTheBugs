@@ -9,10 +9,10 @@
 
     <TextView
         android:id="@+id/text_play"
-        android:layout_width="99dp"
-        android:layout_height="0dp"
+        android:layout_width="91dp"
+        android:layout_height="56dp"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/alfa_slab_one"
         android:text="@string/play"
         android:textColor="@color/colorButtonText"
@@ -27,7 +27,7 @@
         android:id="@+id/button"
         android:layout_width="204dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="105dp"
+        android:layout_marginBottom="113dp"
         android:background="@drawable/roundedbutton"
         android:fontFamily="@font/bevan"
         android:text="@string/start_game"
@@ -41,13 +41,11 @@
 
     <RadioGroup
         android:id="@+id/group_difficulty"
-        android:layout_width="168dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginLeft="49dp"
-        android:layout_marginBottom="58dp"
+        android:layout_width="180dp"
+        android:layout_height="171dp"
+        android:layout_marginBottom="65dp"
         app:layout_constraintBottom_toTopOf="@+id/group_mod"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/text_mod"
         app:layout_constraintTop_toBottomOf="@+id/text_difficulty">
 
         <RadioButton
@@ -81,15 +79,16 @@
 
     <TextView
         android:id="@+id/text_difficulty"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="165dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="4dp"
         android:text="@string/difficulty"
         android:textColor="@color/colorButtonText"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/group_difficulty"
         app:layout_constraintEnd_toEndOf="@+id/group_difficulty"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/group_difficulty"
         app:layout_constraintTop_toBottomOf="@+id/text_play" />
 
@@ -97,33 +96,34 @@
         android:id="@+id/text_mod"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="324dp"
-        android:layout_marginBottom="261dp"
+        android:layout_marginTop="343dp"
+        android:layout_marginBottom="242dp"
         android:text="@string/mod"
         android:textColor="@color/colorButtonText"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button_return"
         app:layout_constraintEnd_toStartOf="@+id/text_play"
-        app:layout_constraintStart_toStartOf="@+id/group_difficulty"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/group_mod"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/group_mod"
-        android:layout_width="201dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginRight="49dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="204dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginLeft="49dp"
+        android:layout_marginBottom="43dp"
         android:background="@android:color/holo_blue_light"
         app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/group_difficulty">
 
         <RadioButton
             android:id="@+id/jumping_bugs"
-            android:layout_width="205dp"
-            android:layout_height="58dp"
+            android:layout_width="212dp"
+            android:layout_height="51dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:text="@string/jumping_bugs"
@@ -132,8 +132,8 @@
 
         <RadioButton
             android:id="@+id/running_bugs"
-            android:layout_width="205dp"
-            android:layout_height="64dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/running_bugs"
             android:textSize="24sp"
             android:textStyle="bold" />
