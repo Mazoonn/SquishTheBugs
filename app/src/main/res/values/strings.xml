@@ -31,8 +31,11 @@
     <string name="todo3">TODO</string>
     <string name="todo4">TODO</string>
     <string name="difficulty">Difficulty :</string>
-    <string name="password">Password</string>
     <string name="nickname">Nickname</string>
-    <string name="user_name">User Name</string>
     <string name="register">Register</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email_address">Email address</string>
+    <string name="birthday">Birthday</string>
 </resources>
