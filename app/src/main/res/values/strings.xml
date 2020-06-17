@@ -18,7 +18,7 @@
     <string name="hard">Hard</string>
     <string name="mod">Mod :</string>
     <string name="main_menu">Main Menu</string>
-    <string name="start_game">Start Game</string>
+    <string name="start_game">Start</string>
     <string name="running_bugs">Running Bugs</string>
     <string name="jumping_bugs">Jumping Bugs</string>
     <string name="togglebutton">ToggleButton</string>
@@ -33,4 +33,6 @@
     <string name="difficulty">Difficulty :</string>
     <string name="password">Password</string>
     <string name="nickname">Nickname</string>
+    <string name="user_name">User Name</string>
+    <string name="register">Register</string>
 </resources>
