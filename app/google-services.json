@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "949251591179",
-    "firebase_url": "https://squish-the-bugs.firebaseio.com",
-    "project_id": "squish-the-bugs",
-    "storage_bucket": "squish-the-bugs.appspot.com"
+    "project_number": "430660786765",
+    "firebase_url": "https://squishthebugs-6ecfc.firebaseio.com",
+    "project_id": "squishthebugs-6ecfc",
+    "storage_bucket": "squishthebugs-6ecfc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:949251591179:android:0356b7d67aa503cae70b0e",
+        "mobilesdk_app_id": "1:430660786765:android:73d0d603721a30a0d05a04",
         "android_client_info": {
           "package_name": "com.example.squishthebugs"
         }
       },
       "oauth_client": [
         {
-          "client_id": "949251591179-12tcoicmdjkqh7t244q4hbnp244loqug.apps.googleusercontent.com",
+          "client_id": "430660786765-mk44et5s8g6f999rpi7pnpo7cdnfrm2m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.squishthebugs",
+            "certificate_hash": "0ce56435d6d438bcff60417d66078e424aecce0d"
+          }
+        },
+        {
+          "client_id": "430660786765-2rgr3i96orcs76n0fh48p3th653t333k.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDHU_H3pcy1PqZPO1dhNuMg5m45aYEU_do"
+          "current_key": "AIzaSyBRnFmVtD3X26dzw3G8xiB3oDPDPNpsDi0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "949251591179-12tcoicmdjkqh7t244q4hbnp244loqug.apps.googleusercontent.com",
+              "client_id": "430660786765-2rgr3i96orcs76n0fh48p3th653t333k.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
