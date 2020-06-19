@@ -7,7 +7,7 @@
     tools:context=".LogoActivity">
 
     <TextView
-        android:id="@+id/text_squish_the_bugs"
+        android:id="@+id/text_squish_the_bugs_logo"
         android:layout_width="326dp"
         android:layout_height="55dp"
         android:layout_marginStart="40dp"

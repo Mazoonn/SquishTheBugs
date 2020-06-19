@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,11 +29,11 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        email = findViewById(R.id.text_view_email);
-        password = findViewById(R.id.text_view_password);
-        confirm_password = findViewById(R.id.text_view_confirm_password);
-        birthday=findViewById(R.id.text_view_birthday);
-        register = findViewById(R.id.register_button);
+        email = findViewById(R.id.text_view_email_register);
+        password = findViewById(R.id.text_view_password_register);
+        confirm_password = findViewById(R.id.text_view_confirm_password_register);
+        birthday=findViewById(R.id.text_view_birthday_register);
+        register = findViewById(R.id.register_button_register);
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         // Write a message to the database
@@ -52,8 +51,8 @@ public class Register extends AppCompatActivity {
                 final String birthday_string=birthday.getText().toString();
                 String password_string=password.getText().toString();
                 String confirm_password_string=confirm_password.getText().toString();
-                TextView register_errors=findViewById(R.id.register_errors);
-                ProgressBar pb=findViewById(R.id.progressBar);
+                final TextView register_errors=findViewById(R.id.register_errors_register);
+                ProgressBar pb=findViewById(R.id.progressBar_register);
 
                 register_errors.setText("");
 
@@ -100,14 +99,13 @@ public class Register extends AppCompatActivity {
                                     Intent intent = new Intent(Register.this,
                                             MainActivity.class);
                                     startActivity(intent);
-
+                                    finish();
                                 }
 
                                 else
                                 {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(Register.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    register_errors.setText(task.getException().getMessage());
                                 }
 
                                 // ...
@@ -115,7 +113,7 @@ public class Register extends AppCompatActivity {
                         });
             }
         });
-        findViewById(R.id.button_return).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_return_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Register.this,

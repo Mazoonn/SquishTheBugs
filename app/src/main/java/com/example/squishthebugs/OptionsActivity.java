@@ -19,8 +19,8 @@ public class OptionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_options);
         SharedPreferences sp = getSharedPreferences("SquishTheBugs", 0);
         final SharedPreferences.Editor sedt = sp.edit();
-        Switch sound = findViewById(R.id.switch_sound);
-        Switch vibration = findViewById(R.id.switch_vibration);
+        Switch sound = findViewById(R.id.switch_sound_settings);
+        Switch vibration = findViewById(R.id.switch_vibration_settings);
 
         sound.setChecked(sp.getBoolean("sound",false));
         vibration.setChecked(sp.getBoolean("vibration",false));
@@ -39,12 +39,12 @@ public class OptionsActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.information).setOnClickListener(new View.OnClickListener()
+        findViewById(R.id.information_settings).setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                TextView txtView = findViewById(R.id.text_information);
+                TextView txtView = findViewById(R.id.text_information_settings);
                 if (txtView.getVisibility() == View.VISIBLE)
                     txtView.setVisibility(View.INVISIBLE);
                 else
@@ -52,7 +52,7 @@ public class OptionsActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.button_return).setOnClickListener(new View.OnClickListener()
+        findViewById(R.id.button_return_settings).setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {

@@ -13,7 +13,7 @@ public class PlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
-        findViewById(R.id.button_return).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_return_play).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PlayActivity.this,

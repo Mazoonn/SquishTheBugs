@@ -8,7 +8,7 @@
     tools:context=".PlayActivity">
 
     <TextView
-        android:id="@+id/text_play"
+        android:id="@+id/text_play_play"
         android:layout_width="94dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
@@ -18,13 +18,13 @@
         android:textColor="@color/colorButtonText"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/text_difficulty"
+        app:layout_constraintBottom_toTopOf="@+id/text_difficulty_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/start"
+        android:id="@+id/start_play"
         android:layout_width="108dp"
         android:layout_height="74dp"
         android:layout_marginBottom="129dp"
@@ -37,22 +37,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/group_mod" />
+        app:layout_constraintTop_toBottomOf="@+id/group_mod_play" />
 
     <RadioGroup
-        android:id="@+id/group_difficulty"
+        android:id="@+id/group_difficulty_play"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/text_mod"
-        app:layout_constraintEnd_toEndOf="@+id/text_play"
-        app:layout_constraintStart_toStartOf="@+id/text_difficulty"
-        app:layout_constraintTop_toBottomOf="@+id/text_difficulty">
+        app:layout_constraintBottom_toTopOf="@+id/text_mod_play"
+        app:layout_constraintEnd_toEndOf="@+id/text_play_play"
+        app:layout_constraintStart_toStartOf="@+id/text_difficulty_play"
+        app:layout_constraintTop_toBottomOf="@+id/text_difficulty_play">
 
         <RadioButton
-            android:id="@+id/easy"
+            android:id="@+id/easy_play"
             android:layout_width="164dp"
             android:layout_height="58dp"
             android:background="@android:color/holo_green_dark"
@@ -61,7 +61,7 @@
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/medium"
+            android:id="@+id/medium_play"
             android:layout_width="164dp"
             android:layout_height="58dp"
             android:background="@android:color/holo_orange_dark"
@@ -70,7 +70,7 @@
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/hard"
+            android:id="@+id/hard_play"
             android:layout_width="164dp"
             android:layout_height="58dp"
             android:background="@android:color/holo_red_dark"
@@ -81,44 +81,42 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/text_difficulty"
+        android:id="@+id/text_difficulty_play"
         android:layout_width="145dp"
         android:layout_height="44dp"
         android:layout_marginTop="97dp"
         android:layout_marginEnd="43dp"
         android:layout_marginRight="43dp"
-        android:layout_marginBottom="479dp"
         android:text="@string/difficulty"
         android:textColor="@color/colorButtonText"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button_return"
-        app:layout_constraintEnd_toEndOf="@+id/text_play"
+        app:layout_constraintEnd_toEndOf="@+id/text_play_play"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_mod"
+        android:id="@+id/text_mod_play"
         android:layout_width="80dp"
         android:layout_height="43dp"
         android:text="@string/mod"
         android:textColor="@color/colorButtonText"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/group_mod"
-        app:layout_constraintStart_toStartOf="@+id/group_difficulty"
-        app:layout_constraintTop_toBottomOf="@+id/group_difficulty" />
+        app:layout_constraintBottom_toTopOf="@+id/group_mod_play"
+        app:layout_constraintStart_toStartOf="@+id/group_difficulty_play"
+        app:layout_constraintTop_toBottomOf="@+id/group_difficulty_play" />
 
     <RadioGroup
-        android:id="@+id/group_mod"
+        android:id="@+id/group_mod_play"
         android:layout_width="225dp"
         android:layout_height="110dp"
         android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/start"
-        app:layout_constraintStart_toStartOf="@+id/text_mod"
-        app:layout_constraintTop_toBottomOf="@+id/text_mod">
+        app:layout_constraintBottom_toTopOf="@+id/start_play"
+        app:layout_constraintStart_toStartOf="@+id/text_mod_play"
+        app:layout_constraintTop_toBottomOf="@+id/text_mod_play">
 
         <RadioButton
-            android:id="@+id/jumping_bugs"
+            android:id="@+id/jumping_bugs_play"
             android:layout_width="190dp"
             android:layout_height="52dp"
             android:layout_marginEnd="16dp"
@@ -129,7 +127,7 @@
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/running_bugs"
+            android:id="@+id/running_bugs_play"
             android:layout_width="190dp"
             android:layout_height="52dp"
             android:background="@android:color/holo_blue_light"
@@ -139,17 +137,16 @@
     </RadioGroup>
 
     <ImageButton
-        android:id="@+id/button_return"
+        android:id="@+id/button_return_play"
         android:layout_width="53dp"
         android:layout_height="53dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="58dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="36dp"
         android:background="@color/colorGreenBackground"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_difficulty"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
