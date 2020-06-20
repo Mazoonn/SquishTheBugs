@@ -6,8 +6,6 @@
     <string name="play">Play</string>
     <string name="TODO">todo</string>
     <string name="login">Login</string>
-    <string name="coins">Coins :</string>
-    <string name="todo">TODO</string>
     <string name="sound">Sound</string>
     <string name="on">On</string>
     <string name="vibrate">Vibrate</string>
@@ -38,4 +36,7 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="email_address">Email address</string>
     <string name="birthday">Birthday</string>
+    <string name="coins">Coins :</string>
+    <string name="heart">heart</string>
+    <string name="todo">TODO</string>
 </resources>

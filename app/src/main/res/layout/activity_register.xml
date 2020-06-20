@@ -71,7 +71,7 @@
         android:clickable="true"
         android:cursorVisible="false"
         android:ems="10"
-        android:focusable="false"
+        android:focusable="true"
         android:hint="@string/birthday"
         android:importantForAutofill="no"
         android:inputType="none"
@@ -142,6 +142,7 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/text_view_password_register"
         app:layout_constraintStart_toStartOf="@+id/text_view_email_register"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_email_register" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_email_register"
+        android:autofillHints="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
