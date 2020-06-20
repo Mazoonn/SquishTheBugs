@@ -28,6 +28,14 @@ public class LoginActivity extends AppCompatActivity
         password=findViewById(R.id.edit_text_passwrord_login);
         mAuth = FirebaseAuth.getInstance();
 
+        if(mAuth.getCurrentUser()!=null)
+        {
+            Intent intent = new Intent(LoginActivity.this,
+                    MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
 
         findViewById(R.id.register_button_login).setOnClickListener(new View.OnClickListener()
         {
@@ -45,33 +53,47 @@ public class LoginActivity extends AppCompatActivity
                 final TextView errors = findViewById(R.id.txt_errors_login);
                 errors.setText("");
                 final String email_string=email.getText().toString();
-                final String passowrd_string=password.getText().toString();
+                final String password_string=password.getText().toString();
                 String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                         "[a-zA-Z0-9_+&*-]+)*@" +
                         "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                         "A-Z]{2,7}$";                   //email regular exprastion
+                String passwordRegex="^.*[0-9].*$";
 
-                if (email_string.isEmpty() || passowrd_string.isEmpty())
+
+                if (email_string.isEmpty() || password_string.isEmpty())
                 {
-                    errors.setText("you must fill in all the required fields");
+                    errors.setText("You must fill in all the required fields");
                     return;
                 }
 
                 if(!email_string.matches(emailRegex))
                 {
-                    email.setError("invalid email address");
+                    email.setError("Invalid email address");
                     return;
                 }
 
-                if(passowrd_string.length()<6)
+                if(password_string.length()<8)
                 {
-                    password.setError("password must be at least 6 characters");
+                    password.setError("Password must be at least 8 characters");
                     return;
                 }
+                if(password_string.length()>15)
+                {
+                    password.setError("Password must be maximum 15 characters");
+                    return;
+                }
+                if(!password_string.matches(passwordRegex))
+                {
+                    password.setError("Password must contain at least one digit");
+                    return;
+                }
+
+
 
                 findViewById(R.id.progressBar_login).setVisibility(View.VISIBLE);
 
-                mAuth.signInWithEmailAndPassword(email_string, passowrd_string)
+                mAuth.signInWithEmailAndPassword(email_string, password_string)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -85,6 +107,7 @@ public class LoginActivity extends AppCompatActivity
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     errors.setText(task.getException().getMessage());
+                                    findViewById(R.id.progressBar_login).setVisibility(View.INVISIBLE);
                                 }
                             }
 

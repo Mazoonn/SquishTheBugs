@@ -1,19 +1,62 @@
 package com.example.squishthebugs;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Button login;
+    TextView nickname;
+    FirebaseUser currentUser;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    String nickname_string;
+
+    @Override
+    public void onBackPressed()
+    {
+        //super.onBackPressed();
+        AlertDialog.Builder ad1=new AlertDialog.Builder(this);
+        ad1.setMessage("Are you sure you want to exit the Game? ");
+        ad1.setCancelable(false);
+
+
+        ad1.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+
+
+            }
+        });
+
+        ad1.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                finishAffinity();
+                System.exit(0);
+            }
+        });
+        AlertDialog alert=ad1.create();
+        alert.show();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         login=findViewById(R.id.login_button_main);
         mAuth = FirebaseAuth.getInstance();
-        final FirebaseUser currentUser=mAuth.getCurrentUser();
+        currentUser=mAuth.getCurrentUser();
+        nickname=findViewById(R.id.text_nickname_main);
+        SharedPreferences sp = getSharedPreferences("SquishTheBugs", 0);
+        final SharedPreferences.Editor sedt = sp.edit();
+        database = FirebaseDatabase.getInstance();
 
 
         findViewById(R.id.black_bug_main).setOnClickListener(new
@@ -51,7 +98,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if(currentUser==null)  login.setText(R.string.login);
-        else login.setText("Logout");
+        else {
+            nickname_string=sp.getString("nickname",null);
+            nickname.setVisibility(View.VISIBLE);
+            if(nickname_string==null)
+            {
+                myRef=database.getReference("Users").child(currentUser.getUid()).child("nickname");
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot)
+                    {
+                        nickname_string = dataSnapshot.getValue(String.class);
+                        sedt.putString("nickname",nickname_string);
+                        nickname.setText("Hi "+nickname_string+"!");
+                        sedt.commit();
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError error)
+                    {
+                        Toast.makeText(MainActivity.this,"Failed to read value." + error.toException(),Toast.LENGTH_LONG).show();
+                        nickname_string="";
+                    }
+                });
+            }
+            else nickname.setText("Hi "+nickname_string+"!");
+            login.setText("Logout");
+        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +138,10 @@ public class MainActivity extends AppCompatActivity {
                 else
                 {
                     mAuth.signOut();
+                    nickname.setVisibility(View.INVISIBLE);
+                    sedt.remove("nickname").commit();
                     login.setText(R.string.login);
+                    currentUser=null;
                 }
                 }
         });
