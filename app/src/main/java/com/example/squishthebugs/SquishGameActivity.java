@@ -1,5 +1,6 @@
 package com.example.squishthebugs;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +8,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -59,6 +63,8 @@ public class SquishGameActivity extends AppCompatActivity
     //options flags
     private boolean sounds;
     private boolean vibrates;
+    //Vibrator
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -72,10 +78,12 @@ public class SquishGameActivity extends AppCompatActivity
         countDownLabel=findViewById(R.id.count_down_game_squish);
 
         SharedPreferences sp = getSharedPreferences("SquishTheBugs", 0);
-        final SharedPreferences.Editor sedt = sp.edit();
 
         soundPlayer=new SoundPlayer(this);
         sounds=sp.getBoolean("sound",false);
+        vibrates=sp.getBoolean("vibration",false);
+
+        vibrator=(Vibrator)getSystemService(VIBRATOR_SERVICE);
 
         heart1=findViewById(R.id.heart1);
         heart2=findViewById(R.id.heart2);
@@ -93,6 +101,7 @@ public class SquishGameActivity extends AppCompatActivity
 
         bug.setX(-80.0f);
         bug.setY(-80.0f);
+
         // Screen Size
         WindowManager windowManager = getWindowManager();
         Display display = windowManager.getDefaultDisplay();
@@ -108,7 +117,6 @@ public class SquishGameActivity extends AppCompatActivity
         black_bug_speed = Math.round(screenHeight / 100.0f);
         zvuv_speed = Math.round(screenHeight / 50.0f);
         dvora_speed = Math.round(screenHeight / 120.0f);
-
 
         frame.setOnTouchListener(new View.OnTouchListener()
         {
@@ -133,12 +141,14 @@ public class SquishGameActivity extends AppCompatActivity
 
         bug.setOnTouchListener(new View.OnTouchListener()
         {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public boolean onTouch(View v, MotionEvent event)
             {
                 if(!game_over)
                 {
                     if(sounds) soundPlayer.playHitSound();
+                    if(vibrates) vibrator.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE));
 
                     blackBugY=-1*bug.getHeight();
                     blackBugX=0;
@@ -151,12 +161,14 @@ public class SquishGameActivity extends AppCompatActivity
 
         dvora.setOnTouchListener(new View.OnTouchListener()
         {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public boolean onTouch(View v, MotionEvent event)
             {
                 if(!game_over)
                 {
                     if(sounds) soundPlayer.playHitSound();
+                    if(vibrates) vibrator.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE));
                     switch (lifes)
                     {
                         case 3:
@@ -187,12 +199,14 @@ public class SquishGameActivity extends AppCompatActivity
 
         zvuv.setOnTouchListener(new View.OnTouchListener()
         {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public boolean onTouch(View v, MotionEvent event)
             {
                 if(!game_over)
                 {
                     if(sounds) soundPlayer.playHitSound();
+                    if(vibrates) vibrator.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE));
                     zvuvY=-1*zvuv.getHeight();
                     zvuvX=0;
                     coins+=100;
@@ -201,8 +215,6 @@ public class SquishGameActivity extends AppCompatActivity
                 return false;
             }
         });
-
-
 
     }
     public void changePos()
@@ -261,7 +273,6 @@ public class SquishGameActivity extends AppCompatActivity
             public void onFinish()
             {
                 gameOver();
-                Toast.makeText(SquishGameActivity.this,"Game Over time left.",Toast.LENGTH_LONG).show() ;
                 //Game Over
             }
         }.start();
@@ -277,15 +288,13 @@ public class SquishGameActivity extends AppCompatActivity
 
         stopTimers();
 
-        bug.setX(-80.0f);
-        bug.setY(-80.0f);
-
-        zvuv.setX(-80.0f);
-        zvuv.setY(-80.0f);
-
-        dvora.setX(-80.0f);
-        dvora.setY(-80.0f);
         //go to results check if lifes=0 so end the game with no coins
+
+        Intent intent = new Intent(SquishGameActivity.this,
+                GameOverActivity.class);
+        intent.putExtra("lose",lifes==0);
+        intent.putExtra("coins",coins);
+        startActivity(intent);
     }
 
     private void updateCountDownText()
@@ -367,6 +376,9 @@ public class SquishGameActivity extends AppCompatActivity
     private void startGame()
     {
         timer =new Timer();
+        dvora.setVisibility(View.VISIBLE);
+        bug.setVisibility(View.VISIBLE);
+        zvuv.setVisibility(View.VISIBLE);
         startCountDown();
         timer.schedule(new TimerTask() {
             @Override
