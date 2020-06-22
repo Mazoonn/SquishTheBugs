@@ -8,7 +8,7 @@ package com.example.squishthebugs;
 
 class SoundPlayer {
     private static SoundPool soundPool;
-    private static int hitSound, overSound;
+    private static int hitSound;
 
     SoundPlayer(Context context)
     {
@@ -21,20 +21,15 @@ class SoundPlayer {
                     .build();
             soundPool = new SoundPool.Builder()
                     .setAudioAttributes(audioAttributes)
-                    .setMaxStreams(2)
+                    .setMaxStreams(1)
                     .build();
         } else {
-            soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         }
 
-        //hitSound = soundPool.load(context, R.raw.hit, 1);
-        //overSound = soundPool.load(context, R.raw.over, 1);
+        hitSound = soundPool.load(context, R.raw.squish_the_bug, 1);
     }
     void playHitSound() {
         soundPool.play(hitSound, 1.0f, 1.0f, 1, 0, 1.0f);
-    }
-
-    void playOverSound() {
-        soundPool.play(overSound, 1.0f, 1.0f, 1, 0, 1.0f);
     }
 }

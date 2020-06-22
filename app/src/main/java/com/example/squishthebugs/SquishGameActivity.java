@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -52,10 +53,12 @@ public class SquishGameActivity extends AppCompatActivity
     private boolean game_over = false;
     private boolean pause = false;
     // SoundSquish
+    private SoundPlayer soundPlayer;
     //life
     private int lifes=3;
-    //private SoundPlayer soundPlayer;
-
+    //options flags
+    private boolean sounds;
+    private boolean vibrates;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,6 +70,12 @@ public class SquishGameActivity extends AppCompatActivity
         coinsLabel = findViewById(R.id.coins_game_squish);
         startLabel = findViewById(R.id.start_txt);
         countDownLabel=findViewById(R.id.count_down_game_squish);
+
+        SharedPreferences sp = getSharedPreferences("SquishTheBugs", 0);
+        final SharedPreferences.Editor sedt = sp.edit();
+
+        soundPlayer=new SoundPlayer(this);
+        sounds=sp.getBoolean("sound",false);
 
         heart1=findViewById(R.id.heart1);
         heart2=findViewById(R.id.heart2);
@@ -101,7 +110,6 @@ public class SquishGameActivity extends AppCompatActivity
         dvora_speed = Math.round(screenHeight / 120.0f);
 
 
-
         frame.setOnTouchListener(new View.OnTouchListener()
         {
             @Override
@@ -130,6 +138,8 @@ public class SquishGameActivity extends AppCompatActivity
             {
                 if(!game_over)
                 {
+                    if(sounds) soundPlayer.playHitSound();
+
                     blackBugY=-1*bug.getHeight();
                     blackBugX=0;
                     coins+=10;
@@ -146,6 +156,7 @@ public class SquishGameActivity extends AppCompatActivity
             {
                 if(!game_over)
                 {
+                    if(sounds) soundPlayer.playHitSound();
                     switch (lifes)
                     {
                         case 3:
@@ -181,6 +192,7 @@ public class SquishGameActivity extends AppCompatActivity
             {
                 if(!game_over)
                 {
+                    if(sounds) soundPlayer.playHitSound();
                     zvuvY=-1*zvuv.getHeight();
                     zvuvX=0;
                     coins+=100;
@@ -273,7 +285,7 @@ public class SquishGameActivity extends AppCompatActivity
 
         dvora.setX(-80.0f);
         dvora.setY(-80.0f);
-        //go to results check if life=0 so end the game with no coins
+        //go to results check if lifes=0 so end the game with no coins
     }
 
     private void updateCountDownText()
@@ -351,6 +363,7 @@ public class SquishGameActivity extends AppCompatActivity
             countDown=null;
         }
     }
+
     private void startGame()
     {
         timer =new Timer();
