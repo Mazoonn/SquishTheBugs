@@ -27,7 +27,7 @@ public class SquishGameActivity extends AppCompatActivity
     private static final long START_TIME_IN_MILLIS=60000;
     // Elements
     private TextView coinsLabel, startLabel,countDownLabel;
-    private ImageView bug,dvora,zvuv;
+    private ImageView bug,dvora,zvuv,heart1,heart2,heart3;
     private FrameLayout frame;
     //size
     private int frameHeight;
@@ -67,6 +67,10 @@ public class SquishGameActivity extends AppCompatActivity
         coinsLabel = findViewById(R.id.coins_game_squish);
         startLabel = findViewById(R.id.start_txt);
         countDownLabel=findViewById(R.id.count_down_game_squish);
+
+        heart1=findViewById(R.id.heart1);
+        heart2=findViewById(R.id.heart2);
+        heart3=findViewById(R.id.heart3);
 
         bug=findViewById(R.id.bug_game_squish);
         dvora=findViewById(R.id.dvora_toxic_game_squish);
@@ -135,6 +139,58 @@ public class SquishGameActivity extends AppCompatActivity
             }
         });
 
+        dvora.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                if(!game_over)
+                {
+                    switch (lifes)
+                    {
+                        case 3:
+                            heart1.setVisibility(View.INVISIBLE);
+                        break;
+                        case 2:
+                            heart2.setVisibility(View.INVISIBLE);
+                            break;
+                        case 1:
+                            heart3.setVisibility(View.INVISIBLE);
+                            break;
+                        default: break;
+                    }
+                    lifes--;
+                    if(lifes==0)
+                    {
+                        //game over and lose the game no coins
+                        gameOver();
+                    }
+                    dvoraY=-1*bug.getHeight();
+                    dvoraX=0;
+                    coins-=20;
+                    coinsLabel.setText("Coins :"+Math.max(coins,0));
+                }
+                return false;
+            }
+        });
+
+        zvuv.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                if(!game_over)
+                {
+                    zvuvY=-1*zvuv.getHeight();
+                    zvuvX=0;
+                    coins+=100;
+                    coinsLabel.setText("Coins :"+coins);
+                }
+                return false;
+            }
+        });
+
+
 
     }
     public void changePos()
@@ -150,7 +206,7 @@ public class SquishGameActivity extends AppCompatActivity
         // Zvuv
         zvuvY -= zvuv_speed;
         if ((zvuvY + zvuv.getHeight())< 0) {
-            zvuvY = screenHeight + 50;
+            zvuvY = screenHeight + 2000;
             zvuvX = (float)Math.floor(Math.random() * (screenWidth - zvuv.getWidth()));
         }
         zvuv.setX(zvuvX);
@@ -159,7 +215,7 @@ public class SquishGameActivity extends AppCompatActivity
         // Dvora
         dvoraY -= dvora_speed;
         if ((dvoraY + dvora.getHeight())< 0) {
-            dvoraY = screenHeight + 2000;
+            dvoraY = screenHeight + 50;
             dvoraX = (float)Math.floor(Math.random() * (screenWidth - dvora.getWidth()));
         }
         dvora.setX(dvoraX);
@@ -206,14 +262,18 @@ public class SquishGameActivity extends AppCompatActivity
         //check if timer is over or life is over
         game_over=true;
         // Game Over!!
-        if (timer != null)
-        {
-            timer.cancel();
-            timer = null;
-        }
+
+        stopTimers();
+
         bug.setX(-80.0f);
         bug.setY(-80.0f);
-        //go to results
+
+        zvuv.setX(-80.0f);
+        zvuv.setY(-80.0f);
+
+        dvora.setX(-80.0f);
+        dvora.setY(-80.0f);
+        //go to results check if life=0 so end the game with no coins
     }
 
     private void updateCountDownText()
@@ -248,17 +308,8 @@ public class SquishGameActivity extends AppCompatActivity
         //super.onBackPressed();
         pause=true;
 
-        if (timer != null)
-        {
-            timer.cancel();
-            timer=null;
-        }
+        stopTimers();
 
-        if (countDown != null)
-        {
-            countDown.cancel();
-            countDown=null;
-        }
         AlertDialog.Builder ad1=new AlertDialog.Builder(this);
         ad1.setMessage("Are you sure you want finish the Game? ");
         ad1.setCancelable(false);
@@ -286,6 +337,20 @@ public class SquishGameActivity extends AppCompatActivity
         alert.show();
     }
 
+    private void stopTimers()
+    {
+        if (timer != null)
+        {
+            timer.cancel();
+            timer=null;
+        }
+
+        if (countDown != null)
+        {
+            countDown.cancel();
+            countDown=null;
+        }
+    }
     private void startGame()
     {
         timer =new Timer();
