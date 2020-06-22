@@ -2,28 +2,36 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coins_game_squish"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     tools:context=".SquishGameActivity">
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/frameLayout_game_squish"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="91dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/coins_game_squish">
 
         <ImageView
-            android:id="@+id/bug_game"
+            android:id="@+id/bug_game_squish"
             android:layout_width="51dp"
             android:layout_height="43dp"
-            app:srcCompat="@drawable/black_bug"
-            android:contentDescription="@string/todo" />
+            android:contentDescription="@string/todo"
+            app:srcCompat="@drawable/black_bug" />
+
+        <TextView
+            android:id="@+id/start_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Tap to Start"
+            android:textSize="24sp" />
     </FrameLayout>
 
     <ImageView
@@ -61,12 +69,12 @@
         android:layout_marginRight="9dp"
         android:contentDescription="@string/heart"
         app:layout_constraintEnd_toStartOf="@+id/heart2"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/coins_game_squish"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/heart" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/coins_game_squish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
@@ -80,7 +88,7 @@
         android:textColor="@color/colorButtonText"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout_game_squish"
         app:layout_constraintEnd_toStartOf="@+id/heart1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

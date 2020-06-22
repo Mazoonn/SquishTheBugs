@@ -20,5 +20,12 @@ public class PlayActivity extends AppCompatActivity {
                         MainActivity.class);
                 startActivity(intent);}
         });
+        findViewById(R.id.start_play).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PlayActivity.this,
+                        SquishGameActivity.class);
+                startActivity(intent);}
+        });
     }
 }
