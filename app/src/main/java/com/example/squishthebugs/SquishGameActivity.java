@@ -6,6 +6,7 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -62,7 +63,6 @@ public class SquishGameActivity extends AppCompatActivity
         Point size = new Point();
         display.getSize(size);
 
-
         frameHeight = frame.getHeight();
         frameWidth = frame.getWidth();
 
@@ -102,9 +102,21 @@ public class SquishGameActivity extends AppCompatActivity
             }
         });
 
+        bug.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                bug.setX(-80.0f);
+                bug.setY(-80.0f);
+                blackBugY=-1*bug.getHeight();
+                blackBugX=0;
+                return false;
+            }
+        });
+
 
     }
-
     public void changePos()
     {
         // Black bug
@@ -115,6 +127,15 @@ public class SquishGameActivity extends AppCompatActivity
         }
         bug.setX(blackBugX);
         bug.setY(blackBugY);
+    }
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus)
+    {
+        super.onWindowFocusChanged(hasFocus);
+        if(hasFocus)
+        {
+            blackBugY=-1*bug.getHeight();
+        }
     }
 }
 
