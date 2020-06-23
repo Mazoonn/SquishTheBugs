@@ -25,13 +25,15 @@
         android:id="@+id/button_return_login"
         android:layout_width="53dp"
         android:layout_height="53dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
         android:layout_marginBottom="36dp"
         android:background="@color/colorGreenBackground"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_errors_login"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
     <EditText
@@ -94,9 +96,9 @@
         android:id="@+id/txt_errors_login"
         android:layout_width="308dp"
         android:layout_height="105dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="112dp"
         android:textColor="@android:color/holo_red_dark"
-        app:layout_constraintBottom_toTopOf="@+id/button_return_login"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
@@ -109,6 +111,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/txt_errors_login"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_button_login" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,7 +22,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import java.util.Locale;
 import java.util.Timer;
@@ -29,16 +30,15 @@ import java.util.TimerTask;
 
 public class SquishGameActivity extends AppCompatActivity
 {
-    private static final long START_TIME_IN_MILLIS=60000;
+    private static final long START_TIME_IN_MILLIS=15000;
     // Elements
     private TextView coinsLabel, startLabel,countDownLabel;
     private ImageView bug,dvora,zvuv,heart1,heart2,heart3;
     private FrameLayout frame;
-    //size
+    //Size
     private int frameHeight;
     private int frameWidth;
     private int screenWidth;
-    private int bugSize;
     private int screenHeight;
     // Speed
     private int black_bug_speed,zvuv_speed,dvora_speed;
@@ -66,6 +66,7 @@ public class SquishGameActivity extends AppCompatActivity
     //Vibrator
     private Vibrator vibrator;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -93,23 +94,20 @@ public class SquishGameActivity extends AppCompatActivity
         dvora=findViewById(R.id.dvora_toxic_game_squish);
         zvuv=findViewById(R.id.zvuv_maniak_game_squish);
 
-        dvora.setX(-80.0f);
-        dvora.setY(-80.0f);
+        dvora.setX(-300.0f);
+        dvora.setY(-300.0f);
 
-        zvuv.setX(-80.0f);
-        zvuv.setY(-80.0f);
+        zvuv.setX(-300.0f);
+        zvuv.setY(-300.0f);
 
-        bug.setX(-80.0f);
-        bug.setY(-80.0f);
+        bug.setX(-300.0f);
+        bug.setY(-300.0f);
 
         // Screen Size
         WindowManager windowManager = getWindowManager();
         Display display = windowManager.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-
-        frameHeight = frame.getHeight();
-        frameWidth = frame.getWidth();
 
         screenWidth = size.x;
         screenHeight = size.y;
@@ -125,9 +123,9 @@ public class SquishGameActivity extends AppCompatActivity
             {
                 if(!game_over)
                 {
-                    startLabel.setVisibility(View.GONE);
                     if(!start_flg)
                     {
+                        startLabel.setVisibility(View.GONE);
                         start_flg=true;
                         countDownLabel.setVisibility(View.VISIBLE);
                         startGame();
@@ -152,8 +150,7 @@ public class SquishGameActivity extends AppCompatActivity
 
                     blackBugY=-1*bug.getHeight();
                     blackBugX=0;
-                    coins+=10;
-                    coinsLabel.setText("Coins :"+coins);
+                    changeCoins(10);
                 }
                 return false;
             }
@@ -190,8 +187,7 @@ public class SquishGameActivity extends AppCompatActivity
                     }
                     dvoraY=-1*bug.getHeight();
                     dvoraX=0;
-                    coins-=20;
-                    coinsLabel.setText("Coins :"+Math.max(coins,0));
+                    changeCoins(-20);
                 }
                 return false;
             }
@@ -209,12 +205,12 @@ public class SquishGameActivity extends AppCompatActivity
                     if(vibrates) vibrator.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE));
                     zvuvY=-1*zvuv.getHeight();
                     zvuvX=0;
-                    coins+=100;
-                    coinsLabel.setText("Coins :"+coins);
+                    changeCoins(100);
                 }
                 return false;
             }
         });
+
 
     }
     public void changePos()
@@ -223,15 +219,15 @@ public class SquishGameActivity extends AppCompatActivity
         blackBugY -= black_bug_speed;
         if ((blackBugY + bug.getHeight())< 0) {
             blackBugY = screenHeight + 20;
-            blackBugX = (float)Math.floor(Math.random() * (screenWidth - bug.getWidth()));
+            blackBugX = (float)Math.floor(Math.random() * (frameWidth - bug.getWidth()));
         }
         bug.setX(blackBugX);
         bug.setY(blackBugY);
         // Zvuv
         zvuvY -= zvuv_speed;
         if ((zvuvY + zvuv.getHeight())< 0) {
-            zvuvY = screenHeight + 2000;
-            zvuvX = (float)Math.floor(Math.random() * (screenWidth - zvuv.getWidth()));
+            zvuvY = screenHeight + 5000;
+            zvuvX = (float)Math.floor(Math.random() * (frameWidth - zvuv.getWidth()));
         }
         zvuv.setX(zvuvX);
         zvuv.setY(zvuvY);
@@ -240,7 +236,7 @@ public class SquishGameActivity extends AppCompatActivity
         dvoraY -= dvora_speed;
         if ((dvoraY + dvora.getHeight())< 0) {
             dvoraY = screenHeight + 50;
-            dvoraX = (float)Math.floor(Math.random() * (screenWidth - dvora.getWidth()));
+            dvoraX = (float)Math.floor(Math.random() * (frameWidth - dvora.getWidth()));
         }
         dvora.setX(dvoraX);
         dvora.setY(dvoraY);
@@ -252,6 +248,8 @@ public class SquishGameActivity extends AppCompatActivity
         super.onWindowFocusChanged(hasFocus);
         if(hasFocus && !pause && !start_flg)
         {
+            frameHeight = frame.getHeight();
+            frameWidth = frame.getWidth();
             zvuvY=-1*zvuv.getHeight();
             dvoraY=-1*dvora.getHeight();
             blackBugY=-1*bug.getHeight();
@@ -295,6 +293,7 @@ public class SquishGameActivity extends AppCompatActivity
         intent.putExtra("lose",lifes==0);
         intent.putExtra("coins",coins);
         startActivity(intent);
+        finish();
     }
 
     private void updateCountDownText()
@@ -324,6 +323,7 @@ public class SquishGameActivity extends AppCompatActivity
         }
     }*/
 
+    @Override
     public void onBackPressed()
     {
         //super.onBackPressed();
@@ -392,6 +392,12 @@ public class SquishGameActivity extends AppCompatActivity
                 });
             }
         }, 0, 20);
+    }
+
+    private synchronized void changeCoins(int change)
+    {
+        coins=Math.max((coins+change),0);
+        coinsLabel.setText("Coins :"+coins);
     }
 }
 

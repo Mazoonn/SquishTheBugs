@@ -9,13 +9,11 @@
 
     <FrameLayout
         android:id="@+id/frameLayout_game_squish"
-        android:layout_width="411dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="91dp"
-        android:layout_marginBottom="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/count_down_game_squish"
+        android:layout_width="0dp"
+        android:layout_height="559dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,6 +22,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:contentDescription="@string/todo"
+            android:visibility="invisible"
             app:srcCompat="@drawable/black_bug" />
 
         <TextView
@@ -38,27 +37,27 @@
             android:id="@+id/zvuv_maniak_game_squish"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            app:srcCompat="@drawable/zvuv_maniak"
-            android:contentDescription="@string/todo" />
+            android:contentDescription="@string/todo"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/zvuv_maniak" />
 
         <ImageView
             android:id="@+id/dvora_toxic_game_squish"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            app:srcCompat="@mipmap/dvora_toxic_foreground"
-            android:contentDescription="@string/todo" />
+            android:contentDescription="@string/todo"
+            android:visibility="invisible"
+            app:srcCompat="@mipmap/dvora_toxic_foreground" />
     </FrameLayout>
 
     <ImageView
         android:id="@+id/heart3"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginRight="42dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
         android:contentDescription="@string/heart"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout_game_squish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/heart2"
         app:layout_constraintTop_toTopOf="parent"
@@ -67,13 +66,11 @@
     <ImageView
         android:id="@+id/heart2"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
         android:contentDescription="@string/heart"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout_game_squish"
         app:layout_constraintEnd_toStartOf="@+id/heart3"
         app:layout_constraintStart_toEndOf="@+id/heart1"
         app:layout_constraintTop_toTopOf="parent"
@@ -82,13 +79,11 @@
     <ImageView
         android:id="@+id/heart1"
         android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:contentDescription="@string/heart"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout_game_squish"
         app:layout_constraintEnd_toStartOf="@+id/heart2"
         app:layout_constraintStart_toEndOf="@+id/coins_game_squish"
         app:layout_constraintTop_toTopOf="parent"
@@ -96,13 +91,13 @@
 
     <TextView
         android:id="@+id/coins_game_squish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="177dp"
+        android:layout_height="39dp"
         android:layout_marginStart="31dp"
         android:layout_marginLeft="31dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="165dp"
-        android:layout_marginRight="165dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
         android:layout_marginBottom="32dp"
         android:contentDescription="@string/todo"
         android:text="@string/coins"
@@ -112,21 +107,23 @@
         app:layout_constraintBottom_toTopOf="@+id/frameLayout_game_squish"
         app:layout_constraintEnd_toStartOf="@+id/heart1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/count_down_game_squish"
-        android:layout_width="173dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="171dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="28dp"
         android:text="@string/timer_0_00"
         android:textColor="@color/colorButtonText"
         android:textSize="30sp"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout_game_squish" />
 

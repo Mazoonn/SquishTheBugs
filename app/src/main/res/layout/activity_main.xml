@@ -8,53 +8,35 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/shop_button_main"
-        android:layout_width="140dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/bevan"
-        android:text="@string/shop"
-        android:textAllCaps="false"
-        android:textColor="@color/colorButtonText"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/play_button_main" />
-
-    <Button
         android:id="@+id/play_button_main"
         android:layout_width="140dp"
         android:layout_height="85dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/roundedbutton"
         android:fontFamily="@font/bevan"
         android:text="@string/play"
         android:textAllCaps="false"
         android:textColor="@color/colorButtonText"
         android:textSize="30sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/login_button_main"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_squish_the_bugs_main" />
+        app:layout_constraintTop_toBottomOf="@+id/text_squish_the_bugs_main"
+        app:layout_constraintVertical_bias="0.596" />
 
     <ImageView
         android:id="@+id/options_button_main"
         android:layout_width="53dp"
         android:layout_height="50dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:background="#ff99cc00"
         android:contentDescription="@string/todo"
         android:tint="@color/colorButtonText"
-        app:layout_constraintBottom_toTopOf="@+id/text_squish_the_bugs_main"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@+id/text_nickname_main"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972"
         app:srcCompat="@android:drawable/ic_menu_manage"
         app:tintMode="multiply" />
 
@@ -62,23 +44,22 @@
         android:id="@+id/login_button_main"
         android:layout_width="140dp"
         android:layout_height="85dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/roundedbutton"
         android:fontFamily="@font/bevan"
         android:text="@string/login"
         android:textAllCaps="false"
         android:textColor="@color/colorButtonText"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shop_button_main" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_squish_the_bugs_main"
         android:layout_width="323dp"
         android:layout_height="62dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
         android:contentDescription="@string/todo"
         android:fontFamily="@font/alfa_slab_one"
         android:text="@string/squish_the_bugs"
@@ -86,22 +67,22 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_nickname_main" />
 
     <TextView
         android:id="@+id/text_nickname_main"
-        android:layout_width="269dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="266dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
         android:contentDescription="@string/todo"
         android:textColor="@color/colorButtonText"
         android:textSize="30sp"
         android:textStyle="bold"
         android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/options_button_main"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,15 +90,16 @@
         android:id="@+id/black_bug_main"
         android:layout_width="147dp"
         android:layout_height="194dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="56dp"
         android:clickable="true"
         android:contentDescription="@string/todo"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_button_main"
-        app:layout_constraintVertical_bias="0.529"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/black_bug" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

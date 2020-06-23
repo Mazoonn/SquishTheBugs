@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    Button login;
+    Button login,play;
     TextView nickname;
     FirebaseUser currentUser;
     FirebaseDatabase database;
@@ -66,41 +66,19 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currentUser=mAuth.getCurrentUser();
         nickname=findViewById(R.id.text_nickname_main);
+        play=findViewById(R.id.play_button_main);
         SharedPreferences sp = getSharedPreferences("SquishTheBugs", 0);
         final SharedPreferences.Editor sedt = sp.edit();
         database = FirebaseDatabase.getInstance();
 
 
-        findViewById(R.id.black_bug_main).setOnClickListener(new
-        View.OnClickListener()
-        {
-         @Override
-        public void onClick(View v)
-         {
-             Toast.makeText(MainActivity.this,"Squish the bugs: Slava, Matan, Ashot.",Toast.LENGTH_LONG).show() ;
-         }
-        });
 
-        findViewById(R.id.options_button_main).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,
-                        OptionsActivity.class);
-                startActivity(intent);}
-        });
 
-        findViewById(R.id.shop_button_main).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,
-                        ShopActivity.class);
-                startActivity(intent);}
-        });
-
-        if(currentUser==null)  login.setText(R.string.login);
-        else {
+        if(currentUser!=null)
+            {
             nickname_string=sp.getString("nickname",null);
             nickname.setVisibility(View.VISIBLE);
+            play.setVisibility(View.VISIBLE);
             if(nickname_string==null)
             {
                 myRef=database.getReference("Users").child(currentUser.getUid()).child("nickname");
@@ -125,6 +103,25 @@ public class MainActivity extends AppCompatActivity {
             login.setText("Logout");
         }
 
+        findViewById(R.id.black_bug_main).setOnClickListener(new
+        View.OnClickListener()
+        {
+         @Override
+        public void onClick(View v)
+         {
+             Toast.makeText(MainActivity.this,"Squish the bugs: Slava, Matan, Ashot.",Toast.LENGTH_LONG).show() ;
+         }
+        });
+
+        findViewById(R.id.options_button_main).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,
+                        OptionsActivity.class);
+                startActivity(intent);}
+        });
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -141,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     nickname.setVisibility(View.INVISIBLE);
                     sedt.remove("nickname").commit();
                     login.setText(R.string.login);
+                    play.setVisibility(View.INVISIBLE);
                     currentUser=null;
                 }
                 }
