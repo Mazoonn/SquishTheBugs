@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
@@ -65,6 +67,9 @@ public class SquishGameActivity extends AppCompatActivity
     private boolean vibrates;
     //Vibrator
     private Vibrator vibrator;
+    //Difficulty
+    private String difficulty;
+    private double coefficient;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -72,6 +77,14 @@ public class SquishGameActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_squish_game);
+
+
+        Intent iin= getIntent();
+        Bundle b = iin.getExtras();
+        if(b!=null)
+        {
+            difficulty=(String)b.get("difficulty");
+        }
 
         frame=findViewById(R.id.frameLayout_game_squish);
         coinsLabel = findViewById(R.id.coins_game_squish);
@@ -112,9 +125,24 @@ public class SquishGameActivity extends AppCompatActivity
         screenWidth = size.x;
         screenHeight = size.y;
 
-        black_bug_speed = Math.round(screenHeight / 100.0f);
-        zvuv_speed = Math.round(screenHeight / 50.0f);
-        dvora_speed = Math.round(screenHeight / 120.0f);
+        //Difficulty settings
+        switch(difficulty)
+        {
+            case "Easy":
+                coefficient=1.5;
+                break;
+            case "Medium":
+                coefficient=1;
+                break;
+            case "Hard":
+                coefficient=0.5;
+                break;
+            default:break;
+        }
+
+        black_bug_speed = Math.round(screenHeight /(float)(100.0 * coefficient));
+        zvuv_speed = Math.round(screenHeight / (float)(50.0 * coefficient)) ;
+        dvora_speed = Math.round(screenHeight / (float)(120.0 * coefficient));
 
         frame.setOnTouchListener(new View.OnTouchListener()
         {
@@ -217,6 +245,7 @@ public class SquishGameActivity extends AppCompatActivity
     {
         // Black bug
         blackBugY -= black_bug_speed;
+
         if ((blackBugY + bug.getHeight())< 0) {
             blackBugY = screenHeight + 20;
             blackBugX = (float)Math.floor(Math.random() * (frameWidth - bug.getWidth()));
@@ -292,6 +321,7 @@ public class SquishGameActivity extends AppCompatActivity
                 GameOverActivity.class);
         intent.putExtra("lose",lifes==0);
         intent.putExtra("coins",coins);
+        intent.putExtra("difficulty",difficulty);
         startActivity(intent);
         finish();
     }

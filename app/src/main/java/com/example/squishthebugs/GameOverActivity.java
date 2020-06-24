@@ -33,6 +33,7 @@ public class GameOverActivity extends AppCompatActivity {
     private int coins_in_db;
     private int total_coins;
     private boolean upload_flg=false;
+    String difficulty;
 
 
 
@@ -58,6 +59,7 @@ public class GameOverActivity extends AppCompatActivity {
         {
             coins=(int)b.get("coins");
             lose=(boolean)b.get("lose");
+            difficulty=(String)b.get("difficulty");
         }
 
         if(!lose)
@@ -113,6 +115,7 @@ public class GameOverActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GameOverActivity.this,
                         SquishGameActivity.class);
+                intent.putExtra("difficulty",difficulty);
                 startActivity(intent);}
         });
 
