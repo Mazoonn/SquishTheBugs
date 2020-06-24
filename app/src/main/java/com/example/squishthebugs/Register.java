@@ -8,6 +8,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -77,6 +78,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
+
         register.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -85,7 +87,7 @@ public class Register extends AppCompatActivity {
                 String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                         "[a-zA-Z0-9_+&*-]+)*@" +
                         "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                        "A-Z]{2,7}$";                   //email regular exprastion
+                        "A-Z]{2,7}$";                   //email regular exprestion
                 String nicknameRegex = "^[A-Z][a-zA-Z0-9_]*$";
                 String passwordRegex="^.*[0-9].*$";
                 final String email_string=email.getText().toString();
@@ -95,6 +97,7 @@ public class Register extends AppCompatActivity {
                 final String nickname_string=nickname.getText().toString();
                 final TextView register_errors=findViewById(R.id.register_errors_register);
                 final ProgressBar pb=findViewById(R.id.progressBar_register);
+
 
                 register_errors.setText("");
 
@@ -190,7 +193,7 @@ public class Register extends AppCompatActivity {
     }
 
     private void updateLabel(Calendar calendar) {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         birthday.setText(sdf.format(calendar.getTime()));

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 public class PlayActivity extends AppCompatActivity {
     private RadioButton difficulty_radio_button;

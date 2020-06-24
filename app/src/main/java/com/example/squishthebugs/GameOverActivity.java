@@ -1,7 +1,10 @@
 package com.example.squishthebugs;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +25,7 @@ public class GameOverActivity extends AppCompatActivity {
 
     //Elements
     private Button main,retry;
-    private TextView coinsLabel,loseLabel,total_coins_Label;
+    private TextView coinsLabel,loseLabel,total_coins_Label,game_overLabel;
     //Data from squish game
     private int coins;
     private boolean lose;
@@ -47,6 +50,7 @@ public class GameOverActivity extends AppCompatActivity {
         retry=findViewById(R.id.button_retry_game_over);
         coinsLabel=findViewById(R.id.txt_coins_game_over);
         loseLabel=findViewById(R.id.txt_you_lose_game_over);
+        game_overLabel=findViewById(R.id.text_game_over);
         total_coins_Label=findViewById(R.id.txt_total_coins);
         database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -62,12 +66,18 @@ public class GameOverActivity extends AppCompatActivity {
             difficulty=(String)b.get("difficulty");
         }
 
+        ObjectAnimator mover = ObjectAnimator.ofFloat(game_overLabel, "translationY", 400f,0f);
+        mover.setDuration(3500);
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.play(mover);
+        animatorSet.start();
+
         if(!lose)
         {
             coinsLabel.setText("Coins :"+coins);
+
+
             //save it in db
-
-
             if(currentUser!=null && coins!=0 && !upload_flg)
                 {
                     upload_flg=true;
@@ -76,7 +86,7 @@ public class GameOverActivity extends AppCompatActivity {
                     myRef.addListenerForSingleValueEvent(new ValueEventListener()
                     {
                         @Override
-                        public void onDataChange(DataSnapshot dataSnapshot)
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot)
                         {
                                 Long data=dataSnapshot.getValue(Long.class);
                                 if(data!=null)
@@ -88,7 +98,7 @@ public class GameOverActivity extends AppCompatActivity {
                                 }
                         }
                         @Override
-                        public void onCancelled(DatabaseError error)
+                        public void onCancelled(@NonNull DatabaseError error)
                         {
                             Toast.makeText(GameOverActivity.this,"Failed to read value." + error.toException(),Toast.LENGTH_LONG).show();
                         }

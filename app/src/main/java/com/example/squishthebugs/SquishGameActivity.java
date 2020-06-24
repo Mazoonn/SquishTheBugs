@@ -32,7 +32,7 @@ import java.util.TimerTask;
 
 public class SquishGameActivity extends AppCompatActivity
 {
-    private static final long START_TIME_IN_MILLIS=15000;
+    private static final long START_TIME_IN_MILLIS=90000;
     // Elements
     private TextView coinsLabel, startLabel,countDownLabel;
     private ImageView bug,dvora,zvuv,heart1,heart2,heart3;
@@ -49,7 +49,7 @@ public class SquishGameActivity extends AppCompatActivity
     // Position
     private float blackBugY,zvuvY,dvoraY;
     private float blackBugX,zvuvX,dvoraX;
-    // Timer
+    // Timers
     private Timer timer;
     private Handler handler = new Handler();
     private CountDownTimer countDown;
@@ -58,7 +58,7 @@ public class SquishGameActivity extends AppCompatActivity
     private boolean start_flg = false;
     private boolean game_over = false;
     private boolean pause = false;
-    // SoundSquish
+    // Squish Sound
     private SoundPlayer soundPlayer;
     //life
     private int lifes=3;
@@ -307,9 +307,6 @@ public class SquishGameActivity extends AppCompatActivity
 
     private void gameOver()
     {
-        //score for the next screen;
-
-        //check if timer is over or life is over
         game_over=true;
         // Game Over!!
 
@@ -335,23 +332,6 @@ public class SquishGameActivity extends AppCompatActivity
         String timeLeft=String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
         countDownLabel.setText("Timer:"+timeLeft);
     }
-    //hit check
-    /*public void hitCheck(float x,float y)
-    {
-        float x1=bug.getX();
-        float x2=x1+bug.getWidth();
-        float y1=bug.getY();
-        float y2=y1+bug.getHeight();
-
-        if (x1 <= x && x <= x2 &&
-        y1 <= y && y <= y2)
-        {
-            blackBugY=-1*bug.getHeight();
-            blackBugX=0;
-            coins+=10;
-            coinsLabel.setText("Coins :"+coins);
-        }
-    }*/
 
     @Override
     public void onBackPressed()
