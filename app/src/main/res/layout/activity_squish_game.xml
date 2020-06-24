@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/bg_game"
     tools:context=".SquishGameActivity">
 
     <FrameLayout
@@ -31,7 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/tap_to_start"
-            android:textSize="24sp" />
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/zvuv_maniak_game_squish"
