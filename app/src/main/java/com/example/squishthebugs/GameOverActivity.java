@@ -42,7 +42,8 @@ public class GameOverActivity extends AppCompatActivity {
     private SoundPlayer soundPlayer;
     //Sound flag
     private boolean sound_flg;
-
+    //Animator
+    private AnimatorSet animatorSet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +72,7 @@ public class GameOverActivity extends AppCompatActivity {
 
         ObjectAnimator mover = ObjectAnimator.ofFloat(game_overLabel, "translationY", 400f, 0f);
         mover.setDuration(2000);
-        final AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet = new AnimatorSet();
         animatorSet.play(mover);
         animatorSet.start();
         animatorSet.addListener(new Animator.AnimatorListener()
@@ -160,5 +161,14 @@ public class GameOverActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        animatorSet.removeAllListeners();
+        soundPlayer.releaseSound();
+        finish();
     }
 }

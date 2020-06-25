@@ -32,7 +32,7 @@ import java.util.TimerTask;
 
 public class SquishGameActivity extends AppCompatActivity
 {
-    private static final long START_TIME_IN_MILLIS=10000;
+    private static final long START_TIME_IN_MILLIS=90000;
     // Elements
     private TextView coinsLabel, startLabel,countDownLabel;
     private ImageView bug,dvora,zvuv,heart1,heart2,heart3;
