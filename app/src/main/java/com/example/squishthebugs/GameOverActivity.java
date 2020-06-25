@@ -71,7 +71,7 @@ public class GameOverActivity extends AppCompatActivity {
 
         ObjectAnimator mover = ObjectAnimator.ofFloat(game_overLabel, "translationY", 400f, 0f);
         mover.setDuration(2000);
-        AnimatorSet animatorSet = new AnimatorSet();
+        final AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(mover);
         animatorSet.start();
         animatorSet.addListener(new Animator.AnimatorListener()
@@ -92,7 +92,9 @@ public class GameOverActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onAnimationCancel(Animator animation) {
+            public void onAnimationCancel(Animator animation)
+            {
+
 
             }
 
@@ -104,7 +106,6 @@ public class GameOverActivity extends AppCompatActivity {
 
         if (!lose) {
             coinsLabel.setText("Coins :" + coins);
-
 
             //save it in db
             if (currentUser != null && coins != 0 && !upload_flg) {
@@ -137,9 +138,12 @@ public class GameOverActivity extends AppCompatActivity {
         main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animatorSet.removeAllListeners();
                 Intent intent = new Intent(GameOverActivity.this,
                         MainActivity.class);
                 startActivity(intent);
+                soundPlayer.releaseSound();
+                finish();
             }
         });
 
@@ -147,10 +151,13 @@ public class GameOverActivity extends AppCompatActivity {
         retry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                animatorSet.removeAllListeners();
                 Intent intent = new Intent(GameOverActivity.this,
                         SquishGameActivity.class);
                 intent.putExtra("difficulty", difficulty);
                 startActivity(intent);
+                soundPlayer.releaseSound();
+                finish();
             }
         });
     }

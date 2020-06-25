@@ -21,10 +21,10 @@ class SoundPlayer {
                     .build();
             soundPool = new SoundPool.Builder()
                     .setAudioAttributes(audioAttributes)
-                    .setMaxStreams(3)
+                    .setMaxStreams(4)
                     .build();
         } else {
-            soundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+            soundPool = new SoundPool(4, AudioManager.STREAM_MUSIC, 0);
         }
 
         hitSound = soundPool.load(context, R.raw.squish_the_bug, 1);
@@ -45,4 +45,5 @@ class SoundPlayer {
     void playFailedSound() {
         soundPool.play(failedSound, 1.0f, 1.0f, 1, 0, 1.0f);
     }
+    void releaseSound(){soundPool.release();}
 }

@@ -307,7 +307,7 @@ public class SquishGameActivity extends AppCompatActivity
     {
         game_over=true;
         // Game Over!!
-
+        soundPlayer.releaseSound();
         stopTimers();
 
         //go to results check if lifes=0 so end the game with no coins
@@ -317,6 +317,7 @@ public class SquishGameActivity extends AppCompatActivity
         intent.putExtra("lose",lifes==0);
         intent.putExtra("coins",coins);
         intent.putExtra("difficulty",difficulty);
+
         startActivity(intent);
         finish();
     }
