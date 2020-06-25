@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="400dp"
         android:text="@string/game_over"
-        android:textColor="@color/colorButtonText"
+        android:textColor="@android:color/holo_red_dark"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
