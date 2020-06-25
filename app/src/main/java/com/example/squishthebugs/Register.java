@@ -7,8 +7,10 @@ import androidx.core.util.TimeUtils;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -75,7 +77,21 @@ public class Register extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        confirm_password.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+            {
+                if(actionId==EditorInfo.IME_ACTION_NEXT)
+                {
+                    InputMethodManager inputManager = (InputMethodManager) Register.this.getSystemService(Register.this.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(Register.this.getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
+                    birthday.callOnClick();
+                }
+                return false;
+            }
 
+        });
         register.setOnClickListener(new View.OnClickListener()
         {
             @Override

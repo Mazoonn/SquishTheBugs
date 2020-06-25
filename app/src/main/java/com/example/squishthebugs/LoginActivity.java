@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -44,6 +46,16 @@ public class LoginActivity extends AppCompatActivity
                         Register.class);
                 startActivity(intent);}
         });
+
+        password.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+        {
+            if(actionId== EditorInfo.IME_ACTION_DONE) findViewById(R.id.login_button_login).callOnClick();
+            return false;
+        }
+    });
 
         findViewById(R.id.login_button_login).setOnClickListener(new View.OnClickListener() {
             @Override
