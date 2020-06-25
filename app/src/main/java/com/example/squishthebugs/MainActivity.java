@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("SquishTheBugs", 0);
         final SharedPreferences.Editor sedt = sp.edit();
         database = FirebaseDatabase.getInstance();
-
-
-
 
         if(currentUser!=null)
             {
@@ -122,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);}
         });
 
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -152,8 +147,5 @@ public class MainActivity extends AppCompatActivity {
                         PlayActivity.class);
                 startActivity(intent);}
         });
-
-
     }
-
 }

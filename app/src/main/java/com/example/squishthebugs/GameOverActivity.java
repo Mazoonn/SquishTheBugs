@@ -84,7 +84,11 @@ public class GameOverActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                if(sound_flg) soundPlayer.playGameOverSound();
+                if(sound_flg)
+                {
+                    if(lose) soundPlayer.playGameOverSound();
+                    else soundPlayer.playWinningSound();
+                }
             }
 
             @Override

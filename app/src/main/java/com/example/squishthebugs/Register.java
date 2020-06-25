@@ -33,7 +33,6 @@ public class Register extends AppCompatActivity {
     EditText email, password, confirm_password, birthday,nickname;
     Button register;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +54,12 @@ public class Register extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
-                //TODO Auto-generated method stub
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -71,13 +70,11 @@ public class Register extends AppCompatActivity {
         birthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //TODO Auto-generated method stub
                 new DatePickerDialog(Register.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
 
         register.setOnClickListener(new View.OnClickListener()
         {
@@ -97,7 +94,6 @@ public class Register extends AppCompatActivity {
                 final String nickname_string=nickname.getText().toString();
                 final TextView register_errors=findViewById(R.id.register_errors_register);
                 final ProgressBar pb=findViewById(R.id.progressBar_register);
-
 
                 register_errors.setText("");
 
@@ -142,7 +138,6 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-
                 //check if date is valid
 
                 pb.setVisibility(View.VISIBLE);
@@ -176,8 +171,6 @@ public class Register extends AppCompatActivity {
                                     pb.setVisibility(View.INVISIBLE);
 
                                 }
-
-                                // ...
                             }
                         });
             }

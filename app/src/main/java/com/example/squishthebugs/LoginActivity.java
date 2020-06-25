@@ -36,7 +36,6 @@ public class LoginActivity extends AppCompatActivity
             finish();
         }
 
-
         findViewById(R.id.register_button_login).setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -59,7 +58,6 @@ public class LoginActivity extends AppCompatActivity
                         "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                         "A-Z]{2,7}$";                   //email regular exprastion
                 String passwordRegex="^.*[0-9].*$";
-
 
                 if (email_string.isEmpty() || password_string.isEmpty())
                 {
@@ -88,8 +86,6 @@ public class LoginActivity extends AppCompatActivity
                     password.setError("Password must contain at least one digit");
                     return;
                 }
-
-
 
                 findViewById(R.id.progressBar_login).setVisibility(View.VISIBLE);
 

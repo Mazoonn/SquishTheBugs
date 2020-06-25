@@ -164,7 +164,6 @@ public class SquishGameActivity extends AppCompatActivity
         }
         );
 
-
         bug.setOnTouchListener(new View.OnTouchListener()
         {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -192,7 +191,7 @@ public class SquishGameActivity extends AppCompatActivity
             {
                 if(!game_over)
                 {
-                    if(sounds) soundPlayer.playHitSound();
+                    if(sounds) soundPlayer.playFailedSound();
                     if(vibrates) vibrator.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE));
                     switch (lifes)
                     {
@@ -238,9 +237,8 @@ public class SquishGameActivity extends AppCompatActivity
                 return false;
             }
         });
-
-
     }
+
     public void changePos()
     {
         // Black bug
@@ -269,8 +267,8 @@ public class SquishGameActivity extends AppCompatActivity
         }
         dvora.setX(dvoraX);
         dvora.setY(dvoraY);
-
     }
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus)
     {

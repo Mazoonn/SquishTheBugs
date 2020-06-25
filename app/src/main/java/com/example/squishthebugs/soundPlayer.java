@@ -8,7 +8,7 @@ package com.example.squishthebugs;
 
 class SoundPlayer {
     private static SoundPool soundPool;
-    private static int hitSound,gameOverSound;
+    private static int hitSound,gameOverSound,winningSound,failedSound;
 
     SoundPlayer(Context context)
     {
@@ -29,11 +29,20 @@ class SoundPlayer {
 
         hitSound = soundPool.load(context, R.raw.squish_the_bug, 1);
         gameOverSound=soundPool.load(context,R.raw.game_over_sound,1);
+        winningSound=soundPool.load(context,R.raw.winning_sound,1);
+        failedSound=soundPool.load(context,R.raw.squish_bee,1);
+
     }
     void playHitSound() {
         soundPool.play(hitSound, 1.0f, 1.0f, 1, 0, 1.0f);
     }
     void playGameOverSound() {
         soundPool.play(gameOverSound, 1.0f, 1.0f, 1, 0, 1.0f);
+    }
+    void playWinningSound() {
+        soundPool.play(winningSound, 1.0f, 1.0f, 1, 0, 1.0f);
+    }
+    void playFailedSound() {
+        soundPool.play(failedSound, 1.0f, 1.0f, 1, 0, 1.0f);
     }
 }
