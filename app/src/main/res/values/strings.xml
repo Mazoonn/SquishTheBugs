@@ -46,4 +46,7 @@
     <string name="game_over">Game Over</string>
     <string name="you_lose">You Lose!</string>
     <string name="total_coins">Total Coins :</string>
+    <string name="mods">Mods :</string>
+    <string name="short_game">Short game</string>
+    <string name="long_game">Long game</string>
 </resources>

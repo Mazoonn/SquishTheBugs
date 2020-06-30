@@ -9,14 +9,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class PlayActivity extends AppCompatActivity {
-    private RadioButton difficulty_radio_button;
-    private RadioGroup difficulty;
+    private RadioButton difficulty_radio_button,mod_radio_button;
+    private RadioGroup difficulty,mods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
         difficulty=findViewById(R.id.group_difficulty_play);
+        mods=findViewById(R.id.radioGroup_mods_play);
 
         findViewById(R.id.button_return_play).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,13 +30,17 @@ public class PlayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                int radio_id=difficulty.getCheckedRadioButtonId();
-                if(radio_id!=-1)
+                int radio_difficulty_id=difficulty.getCheckedRadioButtonId();
+                int radio_mods_id=mods.getCheckedRadioButtonId();
+                if(radio_difficulty_id!=-1&&radio_mods_id!=-1)
                 {
-                    difficulty_radio_button=findViewById(radio_id);
+                    difficulty_radio_button=findViewById(radio_difficulty_id);
+                    mod_radio_button=findViewById(radio_mods_id);
+
                     Intent intent = new Intent(PlayActivity.this,
                             SquishGameActivity.class);
                     intent.putExtra("difficulty",difficulty_radio_button.getText());
+                    intent.putExtra("mod",mod_radio_button.getText());
                     startActivity(intent);
                 }
             }

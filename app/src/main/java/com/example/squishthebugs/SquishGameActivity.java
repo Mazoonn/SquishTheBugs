@@ -68,7 +68,7 @@ public class SquishGameActivity extends AppCompatActivity
     //Vibrator
     private Vibrator vibrator;
     //Difficulty
-    private String difficulty;
+    private String difficulty,mod;
     private double coefficient;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -84,7 +84,11 @@ public class SquishGameActivity extends AppCompatActivity
         if(b!=null)
         {
             difficulty=(String)b.get("difficulty");
+            mod=(String)b.get("mod");
         }
+
+        if(mod.equals("Short game")) game_time=60000;
+        else game_time=120000;
 
         frame=findViewById(R.id.frameLayout_game_squish);
         coinsLabel = findViewById(R.id.coins_game_squish);
@@ -317,6 +321,7 @@ public class SquishGameActivity extends AppCompatActivity
         intent.putExtra("lose",lifes==0);
         intent.putExtra("coins",coins);
         intent.putExtra("difficulty",difficulty);
+        intent.putExtra("mod",mod);
 
         startActivity(intent);
         finish();
