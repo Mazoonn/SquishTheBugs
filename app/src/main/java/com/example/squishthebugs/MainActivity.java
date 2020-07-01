@@ -23,12 +23,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    Button login,play;
-    TextView nickname;
-    FirebaseUser currentUser;
-    FirebaseDatabase database;
-    DatabaseReference myRef;
-    String nickname_string;
+    private Button login,play;
+    private TextView nickname;
+    private FirebaseUser currentUser;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    private String nickname_string;
 
     @Override
     public void onBackPressed()

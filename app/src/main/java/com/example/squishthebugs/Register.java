@@ -32,8 +32,8 @@ import java.util.Locale;
 
 public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    EditText email, password, confirm_password, birthday,nickname;
-    Button register;
+    private EditText email, password, confirm_password, birthday,nickname;
+    private Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

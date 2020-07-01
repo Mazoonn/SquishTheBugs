@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity
 {
     private FirebaseAuth mAuth;
-    EditText email,password;
+    private EditText email,password;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity
                 String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                         "[a-zA-Z0-9_+&*-]+)*@" +
                         "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                        "A-Z]{2,7}$";                   //email regular exprastion
+                        "A-Z]{2,7}$";                   //email regular expression
                 String passwordRegex="^.*[0-9].*$";
 
                 if (email_string.isEmpty() || password_string.isEmpty())

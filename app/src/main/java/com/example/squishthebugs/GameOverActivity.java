@@ -35,7 +35,6 @@ public class GameOverActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private FirebaseAuth mAuth;
-    private int coins_in_db;
     private int total_coins;
     private boolean upload_flg = false;
     String difficulty,mod;

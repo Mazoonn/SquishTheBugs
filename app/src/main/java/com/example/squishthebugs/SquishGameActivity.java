@@ -38,9 +38,7 @@ public class SquishGameActivity extends AppCompatActivity
     private ImageView bug,dvora,zvuv,heart1,heart2,heart3;
     private FrameLayout frame;
     //Size
-    private int frameHeight;
     private int frameWidth;
-    private int screenWidth;
     private int screenHeight;
     // Speed
     private int black_bug_speed,zvuv_speed,dvora_speed;
@@ -126,7 +124,6 @@ public class SquishGameActivity extends AppCompatActivity
         Point size = new Point();
         display.getSize(size);
 
-        screenWidth = size.x;
         screenHeight = size.y;
 
         //Difficulty settings
@@ -279,7 +276,6 @@ public class SquishGameActivity extends AppCompatActivity
         super.onWindowFocusChanged(hasFocus);
         if(hasFocus && !pause && !start_flg)
         {
-            frameHeight = frame.getHeight();
             frameWidth = frame.getWidth();
             zvuvY=-1*zvuv.getHeight();
             dvoraY=-1*dvora.getHeight();
